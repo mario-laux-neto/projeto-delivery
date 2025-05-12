@@ -1,0 +1,21 @@
+{
+  "name": "api-1",
+  "version": "1.0.0",
+  "description": "api muito legal",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon api-base/src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "eu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "5.1.0",
+    "pg": "^8.14.1",
+    "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
