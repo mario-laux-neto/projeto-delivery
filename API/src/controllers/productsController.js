@@ -1,6 +1,6 @@
 import fs from "fs";
-import Product from '../models/ProductModel.js';
-import uploadFile from '../utils/uploadFile.js';
+import Product from '../models/productsModel.js'; // Atualize o caminho para refletir o nome correto do arquivo
+import uploadFile from '../utils/uploadFile.js'; // Corrigido para consistência
 
 const get = async (req, res) => {
   try {

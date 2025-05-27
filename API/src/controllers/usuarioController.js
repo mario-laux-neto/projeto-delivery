@@ -1,7 +1,7 @@
-import User from '../models/UserModel.js';
+import User from '../models/usuarioModel.js'; // Atualize o caminho para refletir o nome correto do arquivo
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import sendMail from "../utils/sendMail.js";
+import sendMail from '../utils/sendMail.js'; // Corrigido para consistência
 
 const get = async (req, res) => {
   try {

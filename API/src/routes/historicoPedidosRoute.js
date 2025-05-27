@@ -1,6 +1,6 @@
 // routes/ordersRoutes.js
 import express from "express";
-import { getOrderHistory } from "../controllers/ordersController.js";
+import { getOrderHistory } from "../controllers/ordersController.js"; // Import atualizado
 
 const router = express.Router();
 

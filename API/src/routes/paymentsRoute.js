@@ -1,4 +1,4 @@
-import paymentController from "../controllers/paymentController.js";
+import paymentController from "../controllers/paymentsController.js"; // Import atualizado
 
 export default (app) => {
   app.get('/payment', paymentController.get);

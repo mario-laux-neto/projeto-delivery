@@ -1,11 +1,11 @@
-// import User from "./UserModel.js";
-// import Categories from "./CategoriesModel.js";
-// import Product from "./ProductModel.js";
-// import Payment from "./PaymentModel.js";
-// import Cupom from "./CupomModel.js";
-// import Adress from "./AdressModel.js";
-// import Order from "./OrderModel.js";
-// import OrderProduct from "./OrderProductModel.js";
+// import User from "./usuarioModel.js"; // Corrigido para refletir o nome correto do arquivo
+// import Categories from "./categoriesModel.js"; // Import atualizado
+// import Product from "./productsModel.js"; // Import atualizado
+// import Payment from "./paymentsModel.js"; // Import atualizado
+// import Cupom from "./cupomsModel.js"; // Import atualizado
+// import Adress from "./adressesModel.js"; // Import atualizado
+// import Order from "./ordersModel.js"; // Import atualizado
+// import OrderProduct from "./ordersProductsModel.js"; // Import atualizado
 
 // (async () => {
 //   await User.sync({ force: true });

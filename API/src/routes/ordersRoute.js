@@ -1,4 +1,4 @@
-import orderController from "../controllers/orderController.js";
+import orderController from "../controllers/ordersController.js"; // Import atualizado
 
 export default (app) => {
   app.get('/order', orderController.get);

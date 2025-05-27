@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import User from '../models/UserModel.js';
+import User from '../models/usurarioModel.js';
 
 export async function admin(req, res, next) {
   try {

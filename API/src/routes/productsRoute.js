@@ -1,4 +1,4 @@
-import productController from "../controllers/productController.js";
+import productController from "../controllers/productsController.js"; // Import atualizado
 
 export default (app) => {
   app.get('/product', productController.get);

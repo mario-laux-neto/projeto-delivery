@@ -1,4 +1,4 @@
-import adressController from "../controllers/adressController.js";
+import adressController from "../controllers/adressesController.js";
 
 export default (app) => {
   app.get('/adress', adressController.get);

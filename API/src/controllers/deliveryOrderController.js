@@ -1,4 +1,4 @@
-import Order from '../models/OrderModel.js';
+import Order from '../models/orderModel.js'; // Import atualizado
 
 const listarPedidosDisponiveis = async (req, res) => {
   try {

@@ -1,9 +1,9 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/postgres.js";
-import User from "./UserModel.js";
-import Adress from "./AdressModel.js";
-import Cupom from "./CupomModel.js";
-import Payment from "./PaymentModel.js";
+import User from "./usuarioModel.js"; // Atualize o caminho para refletir o nome correto do arquivo
+import Adress from "./adressesModel.js"; // Import atualizado
+import Cupom from "./cupomsModel.js"; // Import atualizado
+import Payment from "./paymentsModel.js"; // Import atualizado
 
 const Order = sequelize.define(
     'orders',

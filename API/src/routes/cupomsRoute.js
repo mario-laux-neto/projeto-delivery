@@ -1,4 +1,4 @@
-import cupomController from "../controllers/cupomController.js";
+import cupomController from "../controllers/cupomsController.js"; // Import atualizado
 
 export default (app) => {
   app.get('/cupom', cupomController.get);

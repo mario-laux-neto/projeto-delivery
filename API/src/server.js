@@ -39,14 +39,28 @@ app.use(fileUpload({
   safeFileNames: true,
   preserveExtension: true,
   uriDecodeFileNames: true,
-  debug: true,
-  limits: { fileSize: 50 * 1024 * 1024}
+  debug: true, // Certifique-se de que o debug está ativado para obter mais informações
+  limits: { fileSize: 50 * 1024 * 1024 } // Limite de 50 MB
 }));
 
 Routes(app);
 app.use((req, res) => {
   res.status(404).send('404 - página não encontrada');
 })
+
+app.post('/upload', (req, res) => {
+  if (!req.files || Object.keys(req.files).length === 0) {
+    return res.status(400).send('Nenhum arquivo foi enviado.');
+  }
+
+  const file = req.files.imageProduct; // Substitua 'imageProduct' pelo nome do campo do arquivo
+  file.mv(`./public/uploads/${file.name}`, (err) => {
+    if (err) {
+      return res.status(500).send(err);
+    }
+    res.send('Arquivo enviado com sucesso!');
+  });
+});
 
 sequelize.authenticate()
   .then(() => {

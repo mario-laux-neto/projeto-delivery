@@ -1,4 +1,4 @@
-import userController from "../controllers/userController.js";
+import userController from "../controllers/usuarioController.js";
 import autenticarUserMiddleware from "../middlewares/autenticarUserMiddleware.js";
 
 export default (app) => {

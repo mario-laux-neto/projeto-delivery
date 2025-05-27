@@ -1,11 +1,11 @@
-import Categories from '../models/CategoriesModel.js';
+import Cupom from '../models/cupomsModel.js';
 
 const get = async (req, res) => {
   try {
     const id = req.params.id ? req.params.id.toString().replace(/\D/g, '') : null;
 
     if (!id) {
-      const response = await Categories.findAll({
+      const response = await Cupom.findAll({
         order: [['id', 'desc']],
       });
       
@@ -15,7 +15,7 @@ const get = async (req, res) => {
       });
     }
 
-    const response = await Categories.findOne({
+    const response = await Cupom.findOne({
       where: {
         id: id
       }
@@ -43,7 +43,7 @@ const create = async (corpo) => {
 
     } = corpo
 
-    const response = await Categories.create({
+    const response = await Cupom.create({
       name,
     });
 
@@ -55,7 +55,7 @@ const create = async (corpo) => {
 
 const update = async (corpo, id) => {
   try {
-    const response = await Categories.findOne({
+    const response = await Cupom.findOne({
       where: {
         id
       }
@@ -105,7 +105,7 @@ const destroy = async (req, res) => {
       return res.status(400).send('informa ai paezao')
     }
 
-    const response = await Categories.findOne({
+    const response = await Cupom.findOne({
       where: {
         id
       }

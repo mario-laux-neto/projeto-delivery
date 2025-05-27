@@ -1,7 +1,7 @@
-import Order from '../models/OrderModel.js';
-import Cupom from '../models/CupomModel.js';
-import User from '../models/UserModel.js';
-import OrderProduct from '../models/OrderProductModel.js';
+import Order from '../models/ordersModel.js'; // Atualize o caminho para refletir o nome correto do arquivo
+import Cupom from '../models/cupomsModel.js'; // Atualize o caminho para refletir o nome correto do arquivo
+import User from '../models/usuarioModel.js'; // Atualize o caminho para refletir o nome correto do arquivo
+import OrderProduct from '../models/ordersProductsModel.js'; // Atualize o caminho para refletir o nome correto do arquivo
 import { sequelize } from '../config/postgres.js';
 
 const get = async (req, res) => {

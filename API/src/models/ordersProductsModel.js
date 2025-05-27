@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/postgres.js";
-import Order from "./ordersModel.js";
-import Product from "./ProductModel.js";
+import Order from "./ordersModel.js"; // Import atualizado
+import Product from "./productsModel.js"; // Import atualizado
 
 const OrderProduct = sequelize.define(
     'orders_products',
