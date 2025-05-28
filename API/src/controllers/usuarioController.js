@@ -41,7 +41,7 @@ const get = async (req, res) => {
 
 const create = async (corpo) => {
   const {
-    userName,
+    username,
     cpf,
     name,
     phone,
@@ -52,85 +52,85 @@ const create = async (corpo) => {
   } = corpo;
 
   const verificaEmail = await User.findOne({ where: { email } });
-  const verificaUserName = await User.findOne({ where: { userName } });
+  const verificausername = await User.findOne({ where: { username } });
 
   if (verificaEmail) {
     throw new Error('Já existe um usuário com esse email');
   }
 
-  if (verificaUserName) {
-    throw new Error('Já existe um usuário com esse userName');
+  if (verificausername) {
+    throw new Error('Já existe um usuário com esse username');
   }
 
-  const passwordHash = await bcrypt.hash(password, 10);
+ const passwordHash = await bcrypt.hash(password, 10);
 
-  const response = await User.create({
-    userName,
+const response = await User.create({
+    username,
     cpf,
     name,
     phone,
-    passwordHash,
+    passwordHash, // ✅ aqui salva o hash, não o password puro
     role,
     cart,
     email
-  });
+});
 
   return response;
 };
 
 const login = async (req, res) => {
     try {
-        const  {
-            email, 
-            password,
-        } = req.body;
+        const { email, password } = req.body;
 
-        const user = await User.findOne({
-            where: {email}
-        });
+        const user = await User.findOne({ where: { email } });
 
-        if(!user) {
+        if (!user) {
             return res.status(400).send({
-                message: 'User ou senha icreateParentPathncorretos'
+                message: 'Usuário ou senha incorretos'
             });
         }
 
         const comparacaoSenha = await bcrypt.compare(password, user.passwordHash);
 
-        if(comparacaoSenha) {
-            const token = jwt.sign({idUser: user.id, name: user.nome, email: user.email}, process.env.TOKEN_KEY, {expiresIn: '8h'});
+        if (comparacaoSenha) {
             return res.status(200).send({
-                message: 'login efetuado',
-                response: token
-            })
+                message: 'Login efetuado com sucesso',
+                response: {
+                    id: user.id,
+                    name: user.name,
+                    email: user.email,
+                }
+            });
         } else {
             return res.status(400).send({
-                message: 'User ou senha incorretos'
+                message: 'Usuário ou senha incorretos'
             });
         }
 
     } catch (error) {
-        throw new Error(error.message);
+        return res.status(500).send({
+            message: error.message
+        });
     }
 }
 
 const getDataByToken = async (req, res) => {
     try {
-        const token = req.headers.authorization.split(' ')[1];
+        const id = req.query.id || req.params.id;
 
-        if(!token) {
-            return res.status(400).send({ 
-                message: 'token nao existe' 
+        if (!id) {
+            return res.status(400).send({
+                message: 'ID não fornecido'
             });
         }
-        const usuario = jwt.verify(token, process.env.TOKEN_KEY);
 
         const user = await User.findOne({
-            where: {id: usuario.idUser},
-        })
-        if(!user) {
+            where: { id },
+        });
+
+        if (!user) {
             return res.status(404).send({ 
-                message: 'user nao encontrado' 
+                message: 'Usuário não encontrado' 
             });
         }
         
@@ -140,10 +140,12 @@ const getDataByToken = async (req, res) => {
                 email: user.email,
                 id: user.id
             }
-        })
+        });
 
     } catch (error) {
-        throw new Error(error.message);
+        return res.status(500).send({
+            message: error.message
+        });
     }
 }
 
